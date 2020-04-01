@@ -69,14 +69,6 @@ namespace RegressionSuitAutomationPractice.TestSuit.Features
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
-        {
-#line 3
-#line 4
-testRunner.Given("the user has already loaded the application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-        }
-        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Verify Sign-in Validation messages")]
         [NUnit.Framework.CategoryAttribute("Regression")]
@@ -93,17 +85,17 @@ testRunner.Given("the user has already loaded the application", ((string)(null))
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Sign-in Validation messages", null, @__tags);
-#line 7
+#line 4
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 3
-this.FeatureBackground();
-#line 8
-testRunner.Given(string.Format("User enters {0} and {1} in Sign in Page", email, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
+#line 5
+testRunner.Given("the user has already loaded the application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 6
+testRunner.And(string.Format("User enters {0} and {1} in Sign in Page", email, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 7
 testRunner.When("user clicks Sign in button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
-testRunner.Then("verify below validation messages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 8
+testRunner.Then(string.Format("verify below error {0} on the page", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

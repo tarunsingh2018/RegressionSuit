@@ -132,38 +132,38 @@ namespace RegressionSuitAutomationPractice.Common
         [AfterScenario]
         public static void AfterEachScenario()
         {
-            bool flag = true;
-            string scenarioStatus = scenario.Status.ToString().ToUpper();
-            var scenarioTitle = ScenarioContext.Current.ScenarioInfo.Title;
-            var featureTitle = FeatureContext.Current.FeatureInfo.Title;
-            totalStepsInScenario = sendReport.CountTotalStepsInScenario(featureTitle, scenarioTitle);
-            switch (scenarioStatus)
-            {
-                case "PASS":
-                    passed = passed + 1;
-                    break;
+            //bool flag = true;
+            //string scenarioStatus = scenario.Status.ToString().ToUpper();
+            //var scenarioTitle = ScenarioContext.Current.ScenarioInfo.Title;
+            //var featureTitle = FeatureContext.Current.FeatureInfo.Title;
+            //totalStepsInScenario = sendReport.CountTotalStepsInScenario(featureTitle, scenarioTitle);
+            //switch (scenarioStatus)
+            //{
+            //    case "PASS":
+            //        passed = passed + 1;
+            //        break;
 
-                case "FAIL":
-                    failed = failed + 1;
-                    break;
+            //    case "FAIL":
+            //        failed = failed + 1;
+            //        break;
 
-                default:
-                    break;
-            }
-            //testContexts.GetWebDriverManager().CloseDriver();
-            /* for every scenario reporting in mail*/
+            //    default:
+            //        break;
+            //}
+            ////testContexts.GetWebDriverManager().CloseDriver();
+            ///* for every scenario reporting in mail*/
 
-            executionTime = Convert.ToInt16(stopwatch.Elapsed.TotalSeconds);
-            copyResultObj.OrganiseResultDateWise();
-            int stepPassedPct = (stepPassed * 100) / (totalStepsInScenario);
-            sendReport.ProcessResultsForEmailReport(passed, failed, blocked, executionTime, scenarioTitle, featureTitle, stepPassedPct);
-            passed = 0;
-            failed = 0;
-            blocked = 0;
-            stepFailed = 0;
-            stepPassed = 0;
-            totalStepsInScenario = 0;
-            stopwatch.Restart();
+            //executionTime = Convert.ToInt16(stopwatch.Elapsed.TotalSeconds);
+            //copyResultObj.OrganiseResultDateWise();
+            //int stepPassedPct = (stepPassed * 100) / (totalStepsInScenario);
+            //sendReport.ProcessResultsForEmailReport(passed, failed, blocked, executionTime, scenarioTitle, featureTitle, stepPassedPct);
+            //passed = 0;
+            //failed = 0;
+            //blocked = 0;
+            //stepFailed = 0;
+            //stepPassed = 0;
+            //totalStepsInScenario = 0;
+            //stopwatch.Restart();
 
         }
 
@@ -180,7 +180,7 @@ namespace RegressionSuitAutomationPractice.Common
             passed = 0;
             failed = 0;
             blocked = 0;
-            stopwatch.Restart();
+            //stopwatch.Restart();
         }
 
         [AfterTestRun]

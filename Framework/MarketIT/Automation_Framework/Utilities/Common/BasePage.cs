@@ -13,7 +13,7 @@ namespace Framework.MarketIT.Automation_Framework.Utilities.Common
 {
     public class BasePage
     {
-        IWebDriver driver;
+        protected IWebDriver driver;
         private static ExtentTest reporter;
         GeneralUtilities generalUtilities;
 
@@ -73,10 +73,10 @@ namespace Framework.MarketIT.Automation_Framework.Utilities.Common
             
         }
 
-        public BasePage(IWebDriver iWebDriver, ExtentTest pageReporter)
+        public BasePage(IWebDriver iWebDriver)
         {
             driver = iWebDriver;
-            reporter = pageReporter;
+            //reporter = pageReporter;
             generalUtilities = GeneralUtilities.GetInstance();
         }
 

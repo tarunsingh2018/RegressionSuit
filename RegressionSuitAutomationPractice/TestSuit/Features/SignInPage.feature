@@ -1,13 +1,11 @@
 ﻿Feature: SignInPageFeature
 
-Background: 
-Given the user has already loaded the application
-
 @Regression
 Scenario Outline: Verify Sign-in Validation messages
-Given User enters <Email> and <Password> in Sign in Page
+Given the user has already loaded the application
+And User enters <Email> and <Password> in Sign in Page
 When user clicks Sign in button
-Then verify below validation messages
+Then verify below error <Message> on the page
 Examples:
 | Email          | Password | Message                    |
 | <blank>        | <blank>  | An email address required. |

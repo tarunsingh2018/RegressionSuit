@@ -6,6 +6,8 @@ using RegressionSuitAutomationPractice.Common;
 using RegressionSuitAutomationPractice.TestSuit.Pages;
 using System;
 using TechTalk.SpecFlow;
+using Framework.MarketIT.Automation_Framework.Utilities.Common;
+using NUnit.Framework;
 
 namespace RegressionSuitAutomationPractice.TestSuit.StepDefinations
 {
@@ -14,19 +16,18 @@ namespace RegressionSuitAutomationPractice.TestSuit.StepDefinations
     public class SignInPageSteps
     {
         private IWebDriver webDriver;
-        private SignInPage _signInPage;
+        private SignInPage _signInPage;        
 
         public SignInPageSteps(TestContexts contexts)
         {
-            
+
             this.webDriver = contexts.GetContextWebDriver();
         }
 
         [Given(@"the user has already loaded the application")]
         public void GivenTheUserHasAlreadyOpenedApplication()
         {
-            //var signInPage = new SignInPage(webDriver,Hooks.logReporter);
-            _signInPage = ObjectFactory.CreatePage<SignInPage>(webDriver);            
+            _signInPage = ObjectFactory.CreatePage<SignInPage>(webDriver);
             webDriver.NavigateToUrl(_signInPage.FetchURL());
         }
 
@@ -42,13 +43,19 @@ namespace RegressionSuitAutomationPractice.TestSuit.StepDefinations
         [When(@"user clicks (.*) button")]
         public void WhenUserClicksButton(string button)
         {
-            ScenarioContext.Current.Pending();
+            _signInPage.ClickOnSignInButton();
         }
         
-        [Then(@"verify below validation messages")]
-        public void ThenVerifyBelowValidationMessages()
-        {
-            ScenarioContext.Current.Pending();
+        [Then(@"verify below error (.*) on the page")]
+        public void ThenVerifyBelowErrorOnThePage(string errorMessage)
+        {            
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(_signInPage.GetSignInValidationMessageHeaderText(), "There is 1 error");
+                Assert.AreEqual(_signInPage.GetSignInValidationMessageText(), errorMessage);
+            });
         }
+
+
     }
 }
